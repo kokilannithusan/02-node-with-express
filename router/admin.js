@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const path = require("path");
 
-const productController = require("../controllers/products");
+const adminController = require("../controllers/admin");
 
 // Middleware to parse URL-encoded data (e.g., form submissions)
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -11,9 +11,11 @@ router.use(bodyParser.urlencoded({ extended: false }));
 // Route to display the form for adding a product
 
 // adimin/add-product => GET
-router.get("/add-product", productController.getAddProduct);
+router.get("/add-product", adminController.getAddProduct);
+
+router.get("/products", adminController.getProducts);
 
 // adimin/add-product => POST
-router.post("/add-product", productController.postAddProduct);
+router.post("/add-product", adminController.postAddProduct);
 
 module.exports = router;
